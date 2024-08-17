@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me</title>
+    <link rel="stylesheet" href="/work/anfrage.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const status = urlParams.get('status');
+
+            const messageContainer = document.getElementById('message-container');
+
+            if (status === 'success') {
+                messageContainer.textContent = 'Your message has been sent successfully!';
+                messageContainer.style.color = 'green';
+            } else if (status === 'error') {
+                messageContainer.textContent = 'There was an error sending your message. Please try again.';
+                messageContainer.style.color = 'red';
+            }
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Contact Me</h1>
+    </header>
+    <main>
+        <section class="contact-form">
+            <h2>Send me a message</h2>
+            <form id="contactForm" method="POST" action="/send-message">
+                <input type="text" id="name" name="name" placeholder="Your Name" required>
+                <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+            <div id="message-container"></div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Andre. All rights reserved.</p>
+    </footer>
+</body>
+</html>
